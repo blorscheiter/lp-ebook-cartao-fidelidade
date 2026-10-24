@@ -71,19 +71,13 @@ function App() {
       return;
     }
 
+    await supabase.functions.invoke('lead-webhook', { body: form });
     setSubmitted(true);
     setIsSubmitting(false);
   };
 
   const downloadGuide = () => {
-    const guide = `O FIM DO CARTÃO DE PAPEL\n\nComo aumentar as vendas do seu varejo em até 20% com a fidelização inteligente.\n\n1. CAC x LTV\nVender para quem já conhece sua loja custa menos e cria mais margem.\n\n2. O problema do papel\nSem dados, você não sabe quem sumiu, quando chamar ou qual oferta enviar.\n\n3. Plano em 3 passos\nCapture sem atrito. Crie regras de retorno. Automatize conversas no WhatsApp.\n\nInsights Assertivos | Fidelização inteligente`;
-    const blob = new Blob([guide], { type: 'text/plain;charset=utf-8' });
-    const url = URL.createObjectURL(blob);
-    const anchor = document.createElement('a');
-    anchor.href = url;
-    anchor.download = 'manual-fidelizacao-inteligente.txt';
-    anchor.click();
-    URL.revokeObjectURL(url);
+    window.open('https://growthsolutionsmkt.com.br/wp-content/uploads/2026/10/O-Fim-do-Cartao-de-Papel-Fidelizacao-Inteligente.pptx.pdf', '_blank', 'noopener,noreferrer');
   };
 
   return (
